@@ -24,7 +24,7 @@ function App() {
   const someOtherVal = undefined;
 
   // This will throw an error:
-  const obj = {};
+  // const obj = {};
 
   return (
     <div>
@@ -36,8 +36,10 @@ function App() {
       <h1>{val}</h1>
       <h1>{someOtherVal}</h1>
 
+      <h1>{new Date().toLocaleTimeString()}</h1>
+
       {/* !ERROR */}
-      <h1>{obj}</h1>
+      {/* <h1>{obj}</h1> */}
     </div>
   );
 }
