@@ -23,6 +23,9 @@ function App() {
   const val = null;
   const someOtherVal = undefined;
 
+  // This will throw an error:
+  const obj = {};
+
   return (
     <div>
       <h1>{message}</h1>
@@ -32,6 +35,9 @@ function App() {
       <h1>{bool}</h1>
       <h1>{val}</h1>
       <h1>{someOtherVal}</h1>
+
+      {/* !ERROR */}
+      <h1>{obj}</h1>
     </div>
   );
 }
