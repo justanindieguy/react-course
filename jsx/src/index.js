@@ -9,8 +9,22 @@ const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);
 
 // 4) Create a component
+function getMessage() {
+  return Math.random() > 0.5 ? 'Hello there!' : 'Bye there!';
+}
+
 function App() {
-  return <h1>Hi there!</h1>;
+  const message = getMessage();
+  const score = 10;
+  const nums = [1, 2, 3];
+
+  return (
+    <div>
+      <h1>{message}</h1>
+      <h1>{score}</h1>
+      <h1>{nums}</h1>
+    </div>
+  );
 }
 
 // 5) Show the component on the screen
