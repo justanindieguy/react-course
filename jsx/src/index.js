@@ -18,11 +18,20 @@ function App() {
   const score = 10;
   const nums = [1, 2, 3];
 
+  // NOT displayed:
+  const bool = false;
+  const val = null;
+  const someOtherVal = undefined;
+
   return (
     <div>
       <h1>{message}</h1>
       <h1>{score}</h1>
       <h1>{nums}</h1>
+
+      <h1>{bool}</h1>
+      <h1>{val}</h1>
+      <h1>{someOtherVal}</h1>
     </div>
   );
 }
