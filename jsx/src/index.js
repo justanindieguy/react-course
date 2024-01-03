@@ -14,6 +14,7 @@ function getMessage() {
 }
 
 function App() {
+  // Code to compute values we want to show in our JSX
   const message = getMessage();
   const score = 10;
   const nums = [1, 2, 3];
@@ -26,6 +27,10 @@ function App() {
   // This will throw an error:
   // const obj = {};
 
+  const name = 'Emmanuel';
+  const age = 25;
+
+  // Content we want this component to show
   return (
     <div>
       <h1>{message}</h1>
@@ -37,6 +42,10 @@ function App() {
       <h1>{someOtherVal}</h1>
 
       <h1>{new Date().toLocaleTimeString()}</h1>
+
+      <h1>
+        Hi, my name is {name} and I'm {age}
+      </h1>
 
       {/* !ERROR */}
       {/* <h1>{obj}</h1> */}
