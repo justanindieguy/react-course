@@ -30,6 +30,8 @@ function App() {
   const name = 'Emmanuel';
   const age = 25;
 
+  const maxValue = 10;
+
   // Content we want this component to show
   return (
     <div>
@@ -49,6 +51,13 @@ function App() {
 
       {/* !ERROR */}
       {/* <h1>{obj}</h1> */}
+
+      <input
+        type="number"
+        min={5}
+        max={maxValue}
+        style={{ backgroundColor: 'tomato', border: '3px solid teal' }}
+      />
     </div>
   );
 }
