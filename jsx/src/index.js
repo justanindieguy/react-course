@@ -58,6 +58,12 @@ function App() {
         max={maxValue}
         style={{ backgroundColor: 'tomato', border: '3px solid teal' }}
       />
+
+      <div>
+        <h2>Text Area:</h2>
+        {/* Rule #1 - All prop names follow camelCase (example autoFocus): */}
+        <textarea autoFocus={true} />
+      </div>
     </div>
   );
 }
