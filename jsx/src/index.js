@@ -59,11 +59,42 @@ function App() {
         style={{ backgroundColor: 'tomato', border: '3px solid teal' }}
       />
 
+      {/* Converting HTML to JSX rules: */}
+
       <div>
         <h2>Text Area:</h2>
         {/* Rule #1 - All prop names follow camelCase (example autoFocus): */}
         <textarea autoFocus={true} />
       </div>
+
+      <div>
+        <h2>Max Length 5:</h2>
+        {/* Rule #2 - Attributes meant to be numbers should be provided as numbers with curly braces: */}
+        <input maxLength={5} />
+      </div>
+
+      <div>
+        {/* Rule #3 - boolean 'true' can be written with just the property name: */}
+        <h2>Spell Check True:</h2>
+        <input spellCheck />
+
+        {/* Is equivalent to: */}
+        <input spellCheck={true} />
+      </div>
+
+      <div>
+        <h2>Spell Check False:</h2>
+        {/* 'false' should be written with curly braces */}
+        <input spellCheck={false} />
+      </div>
+
+      {/* Rule #4 - 'class' attribute is written as 'className': */}
+      <div className="divider"></div>
+
+      {/* Rule #5 - in-line styles are provided as objects */}
+      <div
+        style={{ height: '250px', width: '250px', backgroundColor: 'tomato' }}
+      ></div>
     </div>
   );
 }
