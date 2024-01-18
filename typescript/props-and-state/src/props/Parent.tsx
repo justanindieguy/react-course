@@ -1,7 +1,14 @@
-import { Child } from './Child';
+import { Child, ChildAsFC } from './Child';
 
 function Parent() {
-  return <Child color="red" />;
+  return (
+    <div>
+      <Child color="red" handleClick={() => console.log('Clicked!')}>
+        Hello, World!
+      </Child>
+      <ChildAsFC color="red" handleClick={() => console.log('Clicked!')} />
+    </div>
+  );
 }
 
 export default Parent;
