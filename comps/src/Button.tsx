@@ -1,22 +1,10 @@
 import className from 'classnames';
 import { twMerge } from 'tailwind-merge';
-import RequireOnlyOne from './types/RequireOnlyOne';
+import Exclusive from './types/Exclusive';
 
-type Variants = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-
-interface Props {
-  children: React.ReactNode;
-  primary: boolean;
-  secondary: boolean;
-  success: boolean;
-  warning: boolean;
-  danger: boolean;
-  outline?: boolean;
-  rounded?: boolean;
-  [key: string]: any;
-}
-
-type ButtonProps = RequireOnlyOne<Props, Variants>;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  Partial<{ outline?: boolean; rounded?: boolean }> &
+  Exclusive<['primary', 'secondary', 'success', 'warning', 'danger']>;
 
 const Button: React.FC<ButtonProps> = ({
   children,
