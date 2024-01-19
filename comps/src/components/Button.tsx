@@ -1,6 +1,6 @@
 import className from 'classnames';
 import { twMerge } from 'tailwind-merge';
-import Exclusive from './types/Exclusive';
+import Exclusive from '../types/Exclusive';
 
 type Variants = ['primary', 'secondary', 'success', 'warning', 'danger'];
 
