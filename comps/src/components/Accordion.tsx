@@ -13,9 +13,17 @@ interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Accordion: React.FC<AccordionProps> = ({ items }: AccordionProps) => {
-  const [expandedIndex, setExpandedIndex] = useState(0);
+  const [expandedIndex, setExpandedIndex] = useState(-1);
 
-  const handleClick = (index: number) => setExpandedIndex(index);
+  const handleClick = (index: number) => {
+    setExpandedIndex((currentIndex) => {
+      if (currentIndex === index) {
+        return -1;
+      }
+
+      return index;
+    });
+  };
 
   const getContentWrapperClass = (isExpanded: boolean) =>
     className('grid transition-all duration-300 ease-in-out', {
