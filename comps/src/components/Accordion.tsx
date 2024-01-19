@@ -26,7 +26,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }: AccordionProps) => {
   };
 
   const getContentWrapperClass = (isExpanded: boolean) =>
-    className('grid transition-all duration-300 ease-in-out', {
+    className('grid transition-[grid-template-rows] duration-300 ease-in-out', {
       'grid-rows-[0fr] p-0': !isExpanded,
       'grid-rows-[1fr] p-5 border-b': isExpanded,
     });
