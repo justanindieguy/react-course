@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { GoChevronDown, GoChevronLeft } from 'react-icons/go';
 import Panel from './Panel';
 
@@ -15,6 +15,23 @@ interface DropdownProps {
 
 const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const divEl = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = ({ target }: MouseEvent) => {
+      if (!divEl.current) {
+        return;
+      }
+
+      if (!divEl.current.contains(target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handler, true);
+
+    return () => document.removeEventListener('click', handler);
+  }, []);
 
   const handleClick = () => setIsOpen((currentIsOpen) => !currentIsOpen);
 
@@ -39,7 +56,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
   }
 
   return (
-    <div className="w-48 relative">
+    <div ref={divEl} className="w-48 relative">
       <Panel
         onClick={handleClick}
         className="flex justify-between items-center cursor-pointer"
