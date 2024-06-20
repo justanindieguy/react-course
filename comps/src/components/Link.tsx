@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import classNames from 'classnames';
 
-import NavigationContext from '../context/navigation';
+import useNavigation from '../hooks/use-navigation';
 
 type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & { to: string };
 
 const Link: React.FC<LinkProps> = ({ to, children }) => {
-  const { navigate } = useContext(NavigationContext)!;
+  const { navigate } = useNavigation()!;
+
+  const classes = classNames('text-blue-500');
 
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (event.metaKey || event.ctrlKey) {
@@ -18,7 +21,7 @@ const Link: React.FC<LinkProps> = ({ to, children }) => {
   };
 
   return (
-    <a href={to} onClick={handleClick}>
+    <a className={classes} href={to} onClick={handleClick}>
       {children}
     </a>
   );
