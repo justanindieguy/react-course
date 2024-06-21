@@ -8,12 +8,14 @@ const ModalPage: React.FC = () => {
 
   const handleClick = () => setShowModal(true);
 
+  const handleClose = () => setShowModal(false);
+
   return (
     <div>
       <Button onClick={handleClick} primary rounded>
         Open Modal
       </Button>
-      {showModal && <Modal />}
+      {showModal && <Modal onClose={handleClose} />}
     </div>
   );
 };
