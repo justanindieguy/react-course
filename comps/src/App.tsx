@@ -3,6 +3,7 @@ import Route from './components/Route';
 import DropdownPage from './pages/DropdownPage';
 import AccordionPage from './pages/AccordionPage';
 import ButtonPage from './pages/ButtonPage';
+import ModalPage from './pages/ModalPage';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,9 @@ const App: React.FC = () => {
         </Route>
         <Route path="/buttons">
           <ButtonPage />
+        </Route>
+        <Route path="/modal">
+          <ModalPage />
         </Route>
       </div>
     </div>
