@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { useEffect } from 'react';
 
 type ModalProps = React.HTMLAttributes<HTMLElement> & {
   actionBar: React.ReactNode;
@@ -10,13 +11,23 @@ const Modal = ({
   children,
   onClose,
 }: ModalProps): React.ReactPortal => {
+  const overflowHiddenClass = 'overflow-hidden';
+
+  useEffect(() => {
+    document.body.classList.add(overflowHiddenClass);
+
+    return () => {
+      document.body.classList.remove(overflowHiddenClass);
+    };
+  }, []);
+
   return ReactDOM.createPortal(
     <div>
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-gray-300 opacity-80"
+        className="fixed inset-0 bg-gray-300 opacity-80"
       ></div>
-      <div className="absolute inset-40 p-10 bg-white">
+      <div className="fixed inset-40 p-10 bg-white">
         <div className="flex flex-col justify-between h-full">
           {children}
           <div className="flex justify-end">{actionBar}</div>
