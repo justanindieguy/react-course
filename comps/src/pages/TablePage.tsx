@@ -1,5 +1,8 @@
+import React from 'react';
+
 import Table from '../components/Table';
 import { FruitModel } from '../models/FruitModel';
+import { TableConfigModel } from '../models/TableConfigModel';
 
 const TablePage: React.FC = () => {
   const data: FruitModel[] = [
@@ -9,9 +12,30 @@ const TablePage: React.FC = () => {
     { name: 'Lime', color: 'bg-green-500', score: 4 },
   ];
 
+  const config: TableConfigModel<FruitModel>[] = [
+    {
+      label: 'Name',
+      render: (fruit: FruitModel) => fruit.name,
+    },
+    {
+      label: 'Color',
+      render: (fruit: FruitModel) => (
+        <div className={`p-3 m-2 ${fruit.color}`}></div>
+      ),
+    },
+    {
+      label: 'Score',
+      render: (fruit: FruitModel) => fruit.score,
+    },
+  ];
+
+  const keyFn: (fruit: FruitModel) => React.Key = (fruit: FruitModel) => {
+    return fruit.name;
+  };
+
   return (
     <div>
-      <Table data={data} />
+      <Table data={data} config={config} keyFn={keyFn} />
     </div>
   );
 };
