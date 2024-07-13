@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
 import { TableConfigModel } from '../models/TableConfigModel';
 
 interface TableProps<T> {
@@ -13,6 +14,10 @@ export const Table: <T>(props: TableProps<T>) => React.ReactElement = ({
   keyFn,
 }) => {
   const renderedHeaders = config.map((column) => {
+    if (column.header) {
+      return <Fragment key={column.label}>{column.header()}</Fragment>;
+    }
+
     return <th key={column.label}>{column.label}</th>;
   });
 
