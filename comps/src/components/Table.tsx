@@ -1,12 +1,6 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
-import { TableConfigModel } from '../models/TableConfigModel';
-
-interface TableProps<T> {
-  config: TableConfigModel<T>[];
-  data: T[];
-  keyFn: (object: T) => React.Key;
-}
+import { TableProps } from '../models/TableProps';
 
 const Table: <T>(props: TableProps<T>) => React.ReactElement = ({
   data,
