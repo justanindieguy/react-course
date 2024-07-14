@@ -8,7 +8,7 @@ interface TableProps<T> {
   keyFn: (object: T) => React.Key;
 }
 
-export const Table: <T>(props: TableProps<T>) => React.ReactElement = ({
+const Table: <T>(props: TableProps<T>) => React.ReactElement = ({
   data,
   config,
   keyFn,
