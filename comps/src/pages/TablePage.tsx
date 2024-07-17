@@ -1,0 +1,43 @@
+import SortableTable from '../components/SortableTable';
+import { FruitModel } from '../models/FruitModel';
+import { TableConfigModel } from '../models/TableConfigModel';
+
+const TablePage: React.FC = () => {
+  const data: FruitModel[] = [
+    { name: 'Orange', color: 'bg-orange-500', score: 5 },
+    { name: 'Apple', color: 'bg-red-300', score: 3 },
+    { name: 'Banana', color: 'bg-yellow-500', score: 1 },
+    { name: 'Lime', color: 'bg-green-500', score: 4 },
+  ];
+
+  const config: TableConfigModel<FruitModel>[] = [
+    {
+      label: 'Name',
+      render: (fruit: FruitModel) => fruit.name,
+      sortValue: (fruit: FruitModel) => fruit.name,
+    },
+    {
+      label: 'Color',
+      render: (fruit: FruitModel) => (
+        <div className={`p-3 m-2 ${fruit.color}`}></div>
+      ),
+    },
+    {
+      label: 'Score',
+      render: (fruit: FruitModel) => fruit.score,
+      sortValue: (fruit: FruitModel) => fruit.score,
+    },
+  ];
+
+  const keyFn: (fruit: FruitModel) => React.Key = (fruit: FruitModel) => {
+    return fruit.name;
+  };
+
+  return (
+    <div>
+      <SortableTable data={data} config={config} keyFn={keyFn} />
+    </div>
+  );
+};
+
+export default TablePage;
