@@ -1,4 +1,4 @@
-import Table from '../components/Table';
+import SortableTable from '../components/SortableTable';
 import { FruitModel } from '../models/FruitModel';
 import { TableConfigModel } from '../models/TableConfigModel';
 
@@ -14,6 +14,7 @@ const TablePage: React.FC = () => {
     {
       label: 'Name',
       render: (fruit: FruitModel) => fruit.name,
+      sortValue: (fruit: FruitModel) => fruit.name,
     },
     {
       label: 'Color',
@@ -24,6 +25,7 @@ const TablePage: React.FC = () => {
     {
       label: 'Score',
       render: (fruit: FruitModel) => fruit.score,
+      sortValue: (fruit: FruitModel) => fruit.score,
     },
   ];
 
@@ -33,7 +35,7 @@ const TablePage: React.FC = () => {
 
   return (
     <div>
-      <Table data={data} config={config} keyFn={keyFn} />
+      <SortableTable data={data} config={config} keyFn={keyFn} />
     </div>
   );
 };
