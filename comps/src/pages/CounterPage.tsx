@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { produce } from 'immer';
 
 import Panel from '../components/Panel';
 import Button from '../components/Button';
@@ -21,20 +22,21 @@ type Action =
   | { type: ActionTypes.IncrementCount }
   | { type: ActionTypes.DecrementCount };
 
-const reducer = (state: State, action: Action): State => {
+const reducer = (state: State, action: Action): void => {
   switch (action.type) {
     case ActionTypes.AddValueToCount:
-      return {
-        ...state,
-        count: state.count + state.valueToAdd,
-        valueToAdd: 0,
-      };
+      state.count += state.valueToAdd;
+      state.valueToAdd = 0;
+      return;
     case ActionTypes.SetValueToAdd:
-      return { ...state, valueToAdd: action.payload };
+      state.valueToAdd = action.payload;
+      return;
     case ActionTypes.IncrementCount:
-      return { ...state, count: state.count + 1 };
+      state.count += 1;
+      return;
     case ActionTypes.DecrementCount:
-      return { ...state, count: state.count - 1 };
+      state.count -= 1;
+      return;
     default:
       throw new Error('Unexpected action type');
   }
@@ -45,7 +47,7 @@ interface CounterPageProps {
 }
 
 const CounterPage: React.FC<CounterPageProps> = ({ initialCount }) => {
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(produce(reducer), {
     count: initialCount,
     valueToAdd: 0,
   });
